@@ -1,19 +1,28 @@
 """
 Using docstring to REF -> Dr. Charles R. Severance P4E Exercises
 """
-VAL = 0
-emailHistogram = {}
-# Default encoding é UTF-8
-with open(r'DictPy\mbox-short.txt', 'r', encoding='UTF-8') as handle:
-    for lines in handle:
-        if lines.startswith('From '):
-            words = lines.split()
-            email = words[1]
-            emailHistogram[email] = emailHistogram.get(email, 0) + 1
-            VAL = list(emailHistogram.values())
-    # print(emailHistogram)
-    a = max(VAL)
-    print(list(emailHistogram.keys())[
-          list(emailHistogram.values()).index(a)], a)
+from xml import dom
 
-# Consegui fazer o exercicio pg 130 P4E
+
+emails_domain_sum = {}
+
+try:
+    handle = open(r'DictPy/mbox-short.txt', 'r', encoding='UTF-8')
+except Exception:
+    print('Cannot reach the file', handle)
+    exit()
+
+for lines in handle:
+    lines = lines.rstrip()
+    words = lines.split()
+    if len(words) == 0 or words[0] != 'From':
+        continue
+    email = words[1]
+    emailsplit = email.split('@')
+    domain = emailsplit[1]
+    if domain not in emails_domain_sum:
+        emails_domain_sum[domain] = 1
+    else:
+        emails_domain_sum[domain] += 1
+
+print(emails_domain_sum)
