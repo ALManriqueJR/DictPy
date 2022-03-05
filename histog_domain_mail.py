@@ -1,8 +1,6 @@
 """
 Using docstring to REF -> Dr. Charles R. Severance P4E Exercises
 """
-from xml import dom
-
 
 emails_domain_sum = {}
 
