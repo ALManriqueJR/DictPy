@@ -7,7 +7,7 @@ emails_domain_sum = {}
 try:
     handle = open(r'DictPy/mbox-short.txt', 'r', encoding='UTF-8')
 except Exception:
-    print('Cannot reach the file', handle)
+    print('Cannot reach the file')
     exit()
 
 for lines in handle:
