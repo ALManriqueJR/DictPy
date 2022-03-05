@@ -10,10 +10,16 @@ with open(r'DictPy\mbox-short.txt', 'r', encoding='UTF-8') as handle:
             words = lines.split()
             email = words[1]
             emailHistogram[email] = emailHistogram.get(email, 0) + 1
-            VAL = list(emailHistogram.values())
-    # print(emailHistogram)
-    a = max(VAL)
-    print(list(emailHistogram.keys())[
-          list(emailHistogram.values()).index(a)], a)
+    VAL = list(emailHistogram.values())
+    lst_min_max = []
+    for key, val in emailHistogram.items():
+        lst_min_max.append((val, key))
+        if val == max(VAL):
+            print('Max.sender:', key, 'Qt.:', val)
+        elif val == min(VAL):
+            print('Min.sender:', key, 'Qt.:', val)
+    # Individual request
+    # print(list(emailHistogram.keys())[
+    #       list(emailHistogram.values()).index(a)], a)
 
-# Consegui fazer o exercicio pg 130 P4E
+# Exerc. pg. 130 P4E
